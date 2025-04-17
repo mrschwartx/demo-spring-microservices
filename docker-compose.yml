@@ -1,0 +1,38 @@
+services:
+  loans:
+    image: "examplebank/loans:latest"
+    container_name: ebank-loans
+    ports:
+      - "8090:8090"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - ebank_network
+  accounts:
+    image: "examplebank/accounts:latest"
+    container_name: ebank-accounts
+    ports:
+      - "8080:8080"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - ebank_network
+  cards:
+    image: "examplebank/cards:latest"
+    container_name: ebank-cards
+    ports:
+      - "9000:9000"
+    deploy:
+      resources:
+        limits:
+          memory: 700m
+    networks:
+      - ebank_network
+
+networks:
+  ebank_network:
+    driver: "bridge"
