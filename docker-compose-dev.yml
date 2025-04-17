@@ -8,3 +8,14 @@ services:
     ports:
       - 5672:5672
       - 15672:15672
+  
+  mysql:
+    image: mysql:9.3
+    container_name: mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./scripts/mysql/init:/docker-entrypoint-initdb.d

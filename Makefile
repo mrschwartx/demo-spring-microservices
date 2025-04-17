@@ -8,7 +8,10 @@ cards.run:
 	cd cards && mvn clean spring-boot:run -Dspring-boot.run.profiles=qa
 
 configserver.run:
-	cd configserver && mvn clean spring-boot:run 
+	cd configserver && mvn clean spring-boot:run
+
+eurekaserver.run:
+	cd eurekaserver && mvn clean spring-boot:run 
 
 configserver.encrypt:
 	curl -X POST http://localhost:8071/encrypt -H "Content-Type: text/plain" -d 'mysecretpassword'
