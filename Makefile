@@ -7,6 +7,12 @@ accounts.run:
 cards.run:
 	cd cards && mvn clean spring-boot:run
 
+configserver.run:
+	cd configserver && mvn clean spring-boot:run
+
+configserver.encrypt:
+	curl -X POST http://localhost:8071/encrypt -H "Content-Type: text/plain" -d 'mysecretpassword'
+
 docker.loans.build:
 	cd loans && docker build -t examplebank/loans .
 
@@ -15,3 +21,6 @@ docker.accounts.build:
 
 docker.cards.build:
 	cd cards && docker build -t examplebank/cards .
+
+docker.configserver.build:
+	cd configserver && docker build -t examplebank/configserver .

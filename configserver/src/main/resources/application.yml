@@ -1,0 +1,22 @@
+server:
+  port: 8071
+spring:
+  application:
+    name: configserver
+  profiles:
+    active: git
+  cloud:
+    config:
+      server:
+        git:
+          uri: "https://github.com/mrschwartx/demo-spring-microservices.git"
+          default-label: main
+          timeout: 5
+          clean-on-start: true
+          force-pull: true
+          search-paths: configs
+        # native:
+          # search-locations: "classpath:/config"
+          # search-locations: "file://~/config"
+encrypt:
+  key: "MySup3r$tr0ngK3y123!"
