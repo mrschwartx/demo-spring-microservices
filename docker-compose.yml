@@ -64,6 +64,9 @@ services:
     environment:
       SPRING_PROFILES_ACTIVE: "qa"
       SPRING_CONFIG_IMPORT: "optional:configserver:http://configserver:8071/"
+      LOANS_JDBC_DATABASE_URL: "jdbc:mysql://mysql:3306/ebank_loans_db?serverTimezone=Asia/Jakarta"
+      LOANS_JDBC_DATABASE_USERNAME: "loans_user"
+      LOANS_JDBC_DATABASE_PASSWORD: "loans_pass"
     ports:
       - "8090:8090"
     networks:
@@ -78,6 +81,9 @@ services:
     environment:
       SPRING_PROFILES_ACTIVE: "qa"
       SPRING_CONFIG_IMPORT: "optional:configserver:http://configserver:8071/"
+      ACCOUNTS_JDBC_DATABASE_URL: "jdbc:mysql://mysql:3306/ebank_accounts_db?serverTimezone=Asia/Jakarta"
+      ACCOUNTS_JDBC_DATABASE_USERNAME: "accounts_user"
+      ACCOUNTS_JDBC_DATABASE_PASSWORD: "accounts_pass"
     ports:
       - "8080:8080"
     networks:
@@ -92,6 +98,9 @@ services:
     environment:
       SPRING_PROFILES_ACTIVE: "qa"
       SPRING_CONFIG_IMPORT: "optional:configserver:http://configserver:8071/"
+      CARDS_JDBC_DATABASE_URL: "jdbc:mysql://mysql:3306/ebank_cards_db?serverTimezone=Asia/Jakarta"
+      CARDS_JDBC_DATABASE_USERNAME: "cards_user"
+      CARDS_JDBC_DATABASE_PASSWORD: "cards_pass"
     ports:
       - "9000:9000"
     networks:

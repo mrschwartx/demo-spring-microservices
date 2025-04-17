@@ -3,9 +3,9 @@ spring:
     active:
       on-profile: "qa"
   datasource:
-    url: ${JDBC_DATABASE_URL:jdbc:mysql://localhost:3306/ebank_accounts_db?serverTimezone=Asia/Jakarta}
-    username: ${JDBC_DATABASE_USERNAME:accounts_user}
-    password: ${JDBC_DATABASE_PASSWORD:accounts_pass}
+    url: ${ACCOUNTS_JDBC_DATABASE_URL:jdbc:mysql://localhost:3306/ebank_accounts_db?serverTimezone=Asia/Jakarta}
+    username: ${ACCOUNTS_JDBC_DATABASE_USERNAME:accounts_user}
+    password: ${ACCOUNTS_JDBC_DATABASE_PASSWORD:accounts_pass}
     hikari:
       connection-timeout: 30000
       maximum-pool-size: 10
