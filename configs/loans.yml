@@ -1,8 +1,11 @@
 server:
   port: 8090
+  shutdown: graceful
 spring:
   application:
     name: "loans"
+  lifecycle:
+    timeout-per-shutdown-phase: 30s
   config:
     import:
       - "loans_qa.yml"

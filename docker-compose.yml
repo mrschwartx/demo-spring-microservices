@@ -1,7 +1,24 @@
 services:
+  mysql:
+    image: mysql:9.3
+    container_name: ebank-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./scripts/mysql/init:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-prootpass"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+      
   rabbitmq:
     image: rabbitmq:4-management
-    container_name: rabbitmq
+    container_name: ebank-rabbitmq
     environment:
       RABBITMQ_DEFAULT_USER: rabbitmq
       RABBITMQ_DEFAULT_PASS: P4ssword!
@@ -14,6 +31,9 @@ services:
       timeout: 5s
       retries: 10
       start_period: 5s
+    depends_on:
+      mysql:
+        condition: service_healthy
 
   configserver:
     image: "examplebank/configserver:latest"
