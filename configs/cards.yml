@@ -7,9 +7,6 @@ spring:
     import:
       - "cards_qa.yml"
       - "cards_prod.yml"
-  profiles:
-    active:
-      - "qa"
 management:
   endpoints:
     web:

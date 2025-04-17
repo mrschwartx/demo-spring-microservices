@@ -1,7 +1,5 @@
 spring:
   application:
     name: "loans"
-  profiles:
-    active: ${SPRING_PROFILES_ACTIVE:qa}
   config:
     import: ${SPRING_CONFIG_IMPORT:optional:configserver:http://localhost:8071/}

@@ -7,6 +7,6 @@ RUN mvn clean install -DskipTests
 FROM amazoncorretto:21
 WORKDIR configserver
 COPY --from=build target/*.jar configserver.jar
-EXPOSE 8090
+EXPOSE 8071
 
 ENTRYPOINT ["java", "-jar", "configserver.jar"]
