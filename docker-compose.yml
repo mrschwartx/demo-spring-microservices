@@ -1,37 +1,78 @@
 services:
+  rabbitmq:
+    image: rabbitmq:4-management
+    container_name: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: rabbitmq
+      RABBITMQ_DEFAULT_PASS: P4ssword!
+    ports:
+      - 5672:5672
+      - 15672:15672
+
+  configserver:
+    image: "examplebank/configserver:latest"
+    container_name: ebank-configserver
+    environment:
+      SPRING_CLOUD_CONFIG_GIT_URI: "https://github.com/mrschwartx/demo-spring-microservices.git"
+      SPRING_CLOUD_CONFIG_GIT_SEARCH_PATH: "configs"
+    ports:
+      - "8090:8090"
+    networks:
+      - ebank_network
+    depends_on:
+      rabbit:
+        condition: service_healthy
+    healthcheck:
+      test: "curl --fail --silent localhost:8071/actuator/health/readiness | grep UP || exit 1"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+    extends:
+      file: common-config.yml
+      service: microservice-base-config
+
   loans:
     image: "examplebank/loans:latest"
     container_name: ebank-loans
+    environment:
+      SPRING_PROFILES_ACTIVE: qa
+      SPRING_CONFIG_IMPORT: "optional:configserver:http://configserver:8071/"
     ports:
       - "8090:8090"
-    deploy:
-      resources:
-        limits:
-          memory: 700m
     networks:
       - ebank_network
+    depends_on:
+      configserver:
+        condition: service_healthy
+
   accounts:
     image: "examplebank/accounts:latest"
     container_name: ebank-accounts
+    environment:
+      SPRING_PROFILES_ACTIVE: qa
+      SPRING_CONFIG_IMPORT: "optional:configserver:http://configserver:8071/"
     ports:
       - "8080:8080"
-    deploy:
-      resources:
-        limits:
-          memory: 700m
     networks:
       - ebank_network
+    depends_on:
+      configserver:
+        condition: service_healthy
+
   cards:
     image: "examplebank/cards:latest"
     container_name: ebank-cards
+    environment:
+      SPRING_PROFILES_ACTIVE: qa
+      SPRING_CONFIG_IMPORT: "optional:configserver:http://configserver:8071/"
     ports:
       - "9000:9000"
-    deploy:
-      resources:
-        limits:
-          memory: 700m
     networks:
       - ebank_network
+    depends_on:
+      configserver:
+        condition: service_healthy
 
 networks:
   ebank_network:

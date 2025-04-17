@@ -6,5 +6,5 @@ services:
       RABBITMQ_DEFAULT_USER: rabbitmq
       RABBITMQ_DEFAULT_PASS: P4ssword!
     ports:
-      - 5672:5672       
+      - 5672:5672
       - 15672:15672
