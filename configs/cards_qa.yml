@@ -3,17 +3,16 @@ spring:
     active:
       on-profile: "qa"
   datasource:
-    url: jdbc:h2:mem:testdb
-    driverClassName: org.h2.Driver
-    username: sa
-    password: ''
-  h2:
-    console:
-      enabled: true
+    url: ${JDBC_DATABASE_URL:jdbc:mysql://localhost:3306/ebank_cards_db?serverTimezone=Asia/Jakarta}
+    username: ${JDBC_DATABASE_USERNAME:2cf1f9aef17126a69a422c745be79c5c78863df469217b167ce94008cdddd7e5}
+    password: ${JDBC_DATABASE_PASSWORD:4a371a83e2b0a57d9441b781b605d7da5a9a2b00dff3524b7eaf31e0eaf4edd0}
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 10
   jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: update
+    open-in-view: false
     show-sql: true
   rabbitmq:
     host: ${RABBITMQ_HOST:localhost}
