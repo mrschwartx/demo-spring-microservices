@@ -13,6 +13,9 @@ configserver.run:
 eurekaserver.run:
 	cd eurekaserver && mvn clean spring-boot:run 
 
+gatewayserver.run:
+	cd gatewayserver && mvn clean spring-boot:run 
+
 configserver.encrypt:
 	curl -X POST http://localhost:8071/encrypt -H "Content-Type: text/plain" -d 'mysecretpassword'
 
@@ -27,6 +30,12 @@ docker.cards.build:
 
 docker.configserver.build:
 	cd configserver && docker build -t examplebank/configserver .
+
+docker.eurekaserver.build:
+	cd eurekaserver && docker build -t examplebank/eurekaserver .
+
+docker.gatewayserver.build:
+	cd gatewayserver && docker build -t examplebank/gatewayserver .
 
 docker.dev.up:
 	docker compose -f docker-compose-dev.yml up -d --build

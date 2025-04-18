@@ -1,5 +1,6 @@
 eurekaserver:8070
 configserver:8071
+gatewayserver:8072
 
 accounts:8080
 loans:8090

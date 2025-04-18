@@ -55,6 +55,19 @@ services:
       file: ./scripts/docker/common-config.yml
       service: microservice-base-config
 
+  eurekaserver:
+    image: "examplebank/eurekaserver:latest"
+    container_name: ebank-eurekaserver
+    environment:
+      SPRING_CONFIG_IMPORT: "optional:configserver:http://configserver:8071/"
+    ports:
+      - "8070:8070"
+    networks:
+      - ebank_network
+    depends_on:
+      configserver:
+        condition: service_healthy
+
   loans:
     image: "examplebank/loans:latest"
     container_name: ebank-loans
@@ -100,6 +113,19 @@ services:
       CARDS_JDBC_DATABASE_PASSWORD: "cards_pass"
     ports:
       - "9000:9000"
+    networks:
+      - ebank_network
+    depends_on:
+      configserver:
+        condition: service_healthy
+  
+  gatewayserver:
+    image: "examplebank/gatewayserver:latest"
+    container_name: ebank-gatewayserver
+    environment:
+      SPRING_CONFIG_IMPORT: "optional:configserver:http://configserver:8071/"
+    ports:
+      - "8070:8070"
     networks:
       - ebank_network
     depends_on:
