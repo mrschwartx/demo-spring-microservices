@@ -74,6 +74,7 @@ services:
     environment:
       SPRING_PROFILES_ACTIVE: "qa"
       SPRING_CONFIG_IMPORT: "optional:configserver:http://configserver:8071/"
+      EUREKA_SERVICE_URL: "http://eurekaserver:8070/eureka/"
       LOANS_JDBC_DATABASE_URL: "jdbc:mysql://mysql:3306/ebank_loans_db?serverTimezone=Asia/Jakarta"
       LOANS_JDBC_DATABASE_USERNAME: "loans_user"
       LOANS_JDBC_DATABASE_PASSWORD: "loans_pass"
@@ -91,6 +92,7 @@ services:
     environment:
       SPRING_PROFILES_ACTIVE: "qa"
       SPRING_CONFIG_IMPORT: "optional:configserver:http://configserver:8071/"
+      EUREKA_SERVICE_URL: "http://eurekaserver:8070/eureka/"
       ACCOUNTS_JDBC_DATABASE_URL: "jdbc:mysql://mysql:3306/ebank_accounts_db?serverTimezone=Asia/Jakarta"
       ACCOUNTS_JDBC_DATABASE_USERNAME: "accounts_user"
       ACCOUNTS_JDBC_DATABASE_PASSWORD: "accounts_pass"
@@ -108,6 +110,7 @@ services:
     environment:
       SPRING_PROFILES_ACTIVE: "qa"
       SPRING_CONFIG_IMPORT: "optional:configserver:http://configserver:8071/"
+      EUREKA_SERVICE_URL: "http://eurekaserver:8070/eureka/"
       CARDS_JDBC_DATABASE_URL: "jdbc:mysql://mysql:3306/ebank_cards_db?serverTimezone=Asia/Jakarta"
       CARDS_JDBC_DATABASE_USERNAME: "cards_user"
       CARDS_JDBC_DATABASE_PASSWORD: "cards_pass"
@@ -124,6 +127,7 @@ services:
     container_name: ebank-gatewayserver
     environment:
       SPRING_CONFIG_IMPORT: "optional:configserver:http://configserver:8071/"
+      EUREKA_SERVICE_URL: "http://eurekaserver:8070/eureka/"
     ports:
       - "8070:8070"
     networks:
