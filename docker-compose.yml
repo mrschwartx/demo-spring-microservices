@@ -129,7 +129,7 @@ services:
       SPRING_CONFIG_IMPORT: "optional:configserver:http://configserver:8071/"
       EUREKA_SERVICE_URL: "http://eurekaserver:8070/eureka/"
     ports:
-      - "8070:8070"
+      - "8072:8072"
     networks:
       - ebank_network
     depends_on:
