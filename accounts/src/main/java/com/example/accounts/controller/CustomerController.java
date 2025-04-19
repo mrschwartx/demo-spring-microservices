@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
         description = "REST APIs in ExampleBank to FETCH customer details"
 )
 @RestController
-@RequestMapping(path = "/api", produces = {MediaType.APPLICATION_JSON_VALUE})
+@RequestMapping(path = "/api/customers", produces = {MediaType.APPLICATION_JSON_VALUE})
 @Validated
 public class CustomerController {
 

@@ -28,11 +28,9 @@ public class SeedController {
 
         // Create loans for customers
         Loans loan1 = new Loans(null, "0812345678", "LN10001", "Personal Loan", 5000000, 1000000, 4000000);
-        Loans loan2 = new Loans(null, "0822334455", "LN10002", "Car Loan", 20000000, 5000000, 15000000);
-        Loans loan3 = new Loans(null, "0833445566", "LN10003", "Home Loan", 100000000, 20000000, 80000000);
 
         // Save all loans
-        loans = loansRepository.saveAll(List.of(loan1, loan2, loan3));
+        loans = loansRepository.saveAll(List.of(loan1));
 
         return ResponseEntity.ok(loans);
 

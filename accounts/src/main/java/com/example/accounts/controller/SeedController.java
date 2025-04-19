@@ -29,15 +29,11 @@ public class SeedController {
 
         // Insert customers one-by-one to capture the generated ID
         Customer c1 = customerRepository.save(new Customer(null, "John Doe", "john.doe@example.com", "0812345678"));
-        Customer c2 = customerRepository.save(new Customer(null, "Jane Smith", "jane.smith@example.com", "0822334455"));
-        Customer c3 = customerRepository.save(new Customer(null, "Bob Johnson", "bob.johnson@example.com", "0833445566"));
 
         // Insert accounts with actual customer IDs
-        Accounts a1 = new Accounts(c1.getCustomerId(), null, "Savings", "Jakarta");
-        Accounts a2 = new Accounts(c2.getCustomerId(), null, "Checking", "Bandung");
-        Accounts a3 = new Accounts(c3.getCustomerId(), null, "Savings", "Surabaya");
+        Accounts a1 = accountsRepository.save(new Accounts(c1.getCustomerId(), 1000001L, "Savings", "Jakarta"));
 
-        accounts = accountsRepository.saveAll(List.of(a1, a2, a3));
+        accounts = List.of(a1);
 
         return ResponseEntity.ok(accounts);
     }

@@ -4,11 +4,12 @@ import com.example.accounts.dto.CardsDto;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient("cards")
+@FeignClient(name = "cards", path = "/api")
 public interface CardsFeignClient {
 
-    @GetMapping(value = "/api/fetch", consumes = "application/json")
-    ResponseEntity<CardsDto> fetchCardDetails(String mobileNumber);
+    @GetMapping("/fetch")
+    CardsDto fetchCardDetails(@RequestParam String mobileNumber);
 
 }

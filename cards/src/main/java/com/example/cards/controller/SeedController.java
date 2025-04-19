@@ -25,9 +25,7 @@ public class SeedController {
         }
 
         List<Cards> cardsList = List.of(
-                new Cards(null, "0812345678", "4111111111111111", "Visa", 10000, 3000, 7000),
-                new Cards(null, "0822334455", "5500000000000004", "MasterCard", 15000, 5000, 10000),
-                new Cards(null, "0833445566", "340000000000009", "Amex", 12000, 2000, 10000)
+                new Cards(null, "0812345678", "4111111111111111", "Visa", 10000, 3000, 7000)
         );
 
         cards = cardsRepository.saveAll(cardsList);
