@@ -11,6 +11,15 @@ services:
       - ebank_network
     volumes:
       - ./scripts/mysql/init:/docker-entrypoint-initdb.d
+  
+  redis:
+    image: redis:7.2
+    container_name: redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    depends_on:
+      - mysql
       
   rabbitmq:
     image: rabbitmq:4-management
@@ -128,6 +137,8 @@ services:
     environment:
       SPRING_CONFIG_IMPORT: "optional:configserver:http://configserver:8071/"
       EUREKA_SERVICE_URL: "http://eurekaserver:8070/eureka/"
+      SPRING_DATA_REDIS_HOST: "redis"
+      SPRING_DATA_REDIS_PORT: 6379
     ports:
       - "8072:8072"
     networks:

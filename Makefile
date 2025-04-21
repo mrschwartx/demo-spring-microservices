@@ -42,3 +42,21 @@ docker.dev.up:
 
 docker.dev.down:
 	docker compose -f docker-compose-dev.yml down
+
+redis.login:
+	docker exec -it redis redis-cli
+
+redis.check.db:
+	docker exec redis redis-cli DBSIZE
+
+redis.check.key:
+	docker exec redis redis-cli EXISTS $(KEY)
+
+mysql.login:
+	docker exec -it mysql mysql -uroot -prootpass
+
+mysql.check.db:
+	docker exec -i mysql mysql -uroot -prootpass -e "SHOW DATABASES LIKE '$(DB)';"
+
+mysql.check.data:
+	docker exec -i mysql mysql -uroot -prootpass -e "USE $(DB); SELECT * FROM $(TABLE) LIMIT 5;"

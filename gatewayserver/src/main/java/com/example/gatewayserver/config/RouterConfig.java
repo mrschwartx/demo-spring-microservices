@@ -56,7 +56,8 @@ public class RouterConfig {
 
     @Bean
     public RedisRateLimiter redisRateLimiter() {
-        return new RedisRateLimiter(1, 1, 1);
+        // return new RedisRateLimiter(1, 1, 1);
+        return new RedisRateLimiter(1, 1, 5); // 1 request for 5 sec.
     }
 
     @Bean
