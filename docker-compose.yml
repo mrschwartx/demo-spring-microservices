@@ -23,8 +23,6 @@ services:
       - ebank_network
     volumes:
       - redis_data:/data
-    depends_on:
-      - mysql
 
   rabbitmq:
     image: rabbitmq:4-management
@@ -39,8 +37,6 @@ services:
       - ebank_network
     volumes:
       - rabbitmq_data:/var/lib/rabbitmq
-    depends_on:
-      - mysql
 
   configserver:
     image: "examplebank/configserver:latest"
@@ -54,9 +50,17 @@ services:
       - ebank_network
     depends_on:
       - rabbitmq
+      - mysql
+      - redis
     extends:
       file: ./scripts/docker/common-config.yml
       service: microservice-base-config
+    healthcheck:
+      test: "curl --fail --silent localhost:8071/actuator/health/readiness | grep UP || exit 1"
+      interval: 20s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
 
   eurekaserver:
     image: "examplebank/eurekaserver:latest"
@@ -150,7 +154,8 @@ services:
     volumes:
       - ./scripts/alloy/alloy-local-config.yaml:/etc/alloy/config.alloy:ro
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./configserver/logs:/var/log/configserver
+    networks:
+      - ebank_network
     depends_on:
       - gateway
 
@@ -171,6 +176,8 @@ services:
       - MINIO_UPDATE=off
     ports:
       - 9000
+    networks:
+      - ebank_network
 
   read:
     image: grafana/loki:3.1.2
@@ -182,6 +189,8 @@ services:
       - "9095"
     volumes:
       - ./scripts/loki/loki-config.yaml:/etc/loki/config.yaml
+    networks:
+      - ebank_network
     depends_on:
       - minio
 
@@ -195,6 +204,8 @@ services:
       - "9095"
     volumes:
       - ./scripts/loki/loki-config.yaml:/etc/loki/config.yaml
+    networks:
+      - ebank_network
     depends_on:
       - minio
 
@@ -207,6 +218,8 @@ services:
     ports:
       - "3100"
       - "7946"
+    networks:
+      - ebank_network
     depends_on:
       - gateway
 
@@ -225,7 +238,10 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./scripts/grafana/datasource/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml
+      - ./scripts/grafana/provisioning:/etc/grafana/provisioning
+      - ./scripts/grafana/dashboards:/etc/grafana/dashboards
+    networks:
+      - ebank_network
     depends_on:
       - gateway
 
@@ -288,9 +304,27 @@ services:
         /docker-entrypoint.sh nginx -g "daemon off;"
     ports:
       - "3100:3100"
+    networks:
+      - ebank_network
     depends_on:
       - read
       - write
+  
+  prometheus:
+    image: prom/prometheus:v3.1.0
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./scripts/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    command: 
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.retention.time=5m'
+      - '--storage.tsdb.retention.size=10GB'
+    networks:
+      - ebank_network
+    depends_on:
+      - gateway
 
 networks:
   ebank_network:

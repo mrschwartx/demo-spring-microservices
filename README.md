@@ -53,6 +53,8 @@ docker compose up -d --build
   - **Grafana Loki**: Log aggregation system.
   - **Grafana**: Visualization and dashboarding tool.
   - **MinIO**: S3-compatible object storage for storing log chunks.
+  - **Micrometer**: 
+  - **Prometheus**:
 - **Infrastructure**:
   - **Nginx**: Reverse proxy and load balancer (can be used in front of services).
   - **Docker & Docker Compose**: Containerization and service orchestration.

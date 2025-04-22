@@ -83,7 +83,8 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./scripts/grafana/datasource/datasource.yml:/etc/grafana/provisioning/datasources/datasource.yml
+      - ./scripts/grafana/provisioning:/etc/grafana/provisioning
+      - ./scripts/grafana/dashboards:/etc/grafana/dashboards
     depends_on:
       - gateway
 
@@ -149,3 +150,11 @@ services:
     depends_on:
       - read
       - write
+  
+  prometheus:
+    image: prom/prometheus:v3.1.0
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./scripts/prometheus/prometheus-dev.yml:/etc/prometheus/prometheus.yml
