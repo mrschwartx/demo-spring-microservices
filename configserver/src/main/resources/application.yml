@@ -2,7 +2,7 @@ server:
   port: 8071
 spring:
   application:
-    name: configserver
+    name: "configserver"
   profiles:
     active: git
   cloud:
@@ -32,5 +32,15 @@ management:
     health:
       probes:
         enabled: true
+logging:
+  level:
+    com:
+      example:
+        configserver: DEBUG
+  file:
+    name: logs/app.log
+  pattern:
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} %5p [${spring.application.name},%X{trace_id:-},%X{span_id:-}] [%t] %c{1} - %m%n"
+    console: "%d{HH:mm:ss.SSS} %5p [${spring.application.name},%X{trace_id:-},%X{span_id:-}] [%t] %c{1} - %m%n"
 encrypt:
   key: "MySup3r$tr0ngK3y123!"

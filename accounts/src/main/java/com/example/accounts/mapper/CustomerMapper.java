@@ -26,5 +26,4 @@ public class CustomerMapper {
         customerDetailsDto.setMobileNumber(customer.getMobileNumber());
         return customerDetailsDto;
     }
-
 }

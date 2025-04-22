@@ -1,0 +1,30 @@
+2025-04-22 12:07:21.534  INFO [configserver,,] [SpringApplicationShutdownHook] o.s.b.w.e.t.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-22 12:07:21.548  INFO [configserver,,] [tomcat-shutdown] o.s.b.w.e.t.GracefulShutdown - Graceful shutdown complete
+2025-04-22 13:01:18.659  INFO [configserver,,] [main] c.e.c.ConfigserverApplication - Starting ConfigserverApplication using Java 21.0.6 with PID 195086 (/home/potatohuman/Workspaces/mzs/DEMO/course-spring-microservices-eazybytes/code/configserver/target/classes started by potatohuman in /home/potatohuman/Workspaces/mzs/DEMO/course-spring-microservices-eazybytes/code/configserver)
+2025-04-22 13:01:18.663 DEBUG [configserver,,] [main] c.e.c.ConfigserverApplication - Running with Spring Boot v3.4.4, Spring v6.2.5
+2025-04-22 13:01:18.665  INFO [configserver,,] [main] c.e.c.ConfigserverApplication - The following 1 profile is active: "git"
+2025-04-22 13:01:21.404  INFO [configserver,,] [main] o.s.c.c.s.GenericScope - BeanFactory id=92b412a9-0e77-313a-bf44-5825a3961245
+2025-04-22 13:01:22.475  INFO [configserver,,] [main] o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8071 (http)
+2025-04-22 13:01:22.542  INFO [configserver,,] [main] o.a.c.c.StandardService - Starting service [Tomcat]
+2025-04-22 13:01:22.544  INFO [configserver,,] [main] o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-22 13:01:22.748  INFO [configserver,,] [main] o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+2025-04-22 13:01:22.750  INFO [configserver,,] [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3966 ms
+2025-04-22 13:01:27.538  INFO [configserver,,] [main] o.s.b.a.e.w.EndpointLinksResolver - Exposing 17 endpoints beneath base path '/actuator'
+2025-04-22 13:01:27.943  INFO [configserver,,] [main] o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8071 (http) with context path '/'
+2025-04-22 13:01:28.083  INFO [configserver,,] [main] c.e.c.ConfigserverApplication - Started ConfigserverApplication in 11.02 seconds (process running for 12.329)
+2025-04-22 14:18:56.960  INFO [configserver,,] [SpringApplicationShutdownHook] o.s.b.w.e.t.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-22 14:18:56.981  INFO [configserver,,] [tomcat-shutdown] o.s.b.w.e.t.GracefulShutdown - Graceful shutdown complete
+2025-04-22 14:20:38.406  INFO [configserver,,] [main] c.e.c.ConfigserverApplication - Starting ConfigserverApplication using Java 21.0.6 with PID 237714 (/home/potatohuman/Workspaces/mzs/DEMO/course-spring-microservices-eazybytes/code/configserver/target/classes started by potatohuman in /home/potatohuman/Workspaces/mzs/DEMO/course-spring-microservices-eazybytes/code/configserver)
+2025-04-22 14:20:38.411 DEBUG [configserver,,] [main] c.e.c.ConfigserverApplication - Running with Spring Boot v3.4.4, Spring v6.2.5
+2025-04-22 14:20:38.414  INFO [configserver,,] [main] c.e.c.ConfigserverApplication - The following 1 profile is active: "git"
+2025-04-22 14:20:48.716  INFO [configserver,,] [main] o.s.c.c.s.GenericScope - BeanFactory id=92b412a9-0e77-313a-bf44-5825a3961245
+2025-04-22 14:20:52.306  INFO [configserver,,] [main] o.s.b.w.e.t.TomcatWebServer - Tomcat initialized with port 8071 (http)
+2025-04-22 14:20:52.541  INFO [configserver,,] [main] o.a.c.c.StandardService - Starting service [Tomcat]
+2025-04-22 14:20:52.542  INFO [configserver,,] [main] o.a.c.c.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-22 14:20:52.892  INFO [configserver,,] [main] o.a.c.c.C.[.[.[/] - Initializing Spring embedded WebApplicationContext
+2025-04-22 14:20:52.893  INFO [configserver,,] [main] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 13909 ms
+2025-04-22 14:20:58.530  INFO [configserver,,] [main] o.s.b.a.e.w.EndpointLinksResolver - Exposing 17 endpoints beneath base path '/actuator'
+2025-04-22 14:20:59.196  INFO [configserver,,] [main] o.s.b.w.e.t.TomcatWebServer - Tomcat started on port 8071 (http) with context path '/'
+2025-04-22 14:20:59.268  INFO [configserver,,] [main] c.e.c.ConfigserverApplication - Started ConfigserverApplication in 24.035 seconds (process running for 26.699)
+2025-04-22 14:23:08.188  INFO [configserver,,] [SpringApplicationShutdownHook] o.s.b.w.e.t.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-04-22 14:23:08.203  INFO [configserver,,] [tomcat-shutdown] o.s.b.w.e.t.GracefulShutdown - Graceful shutdown complete

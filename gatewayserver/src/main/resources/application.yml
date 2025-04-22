@@ -29,3 +29,13 @@ management:
   info:
     env:
       enabled: true
+logging:
+  level:
+    com:
+      example:
+        gatewayserver: DEBUG
+  file:
+    name: logs/app.log
+  pattern:
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} %5p [${spring.application.name},%X{trace_id:-},%X{span_id:-}] [%t] %c{1} - %m%n"
+    console: "%d{HH:mm:ss.SSS} %5p [${spring.application.name},%X{trace_id:-},%X{span_id:-}] [%t] %c{1} - %m%n"

@@ -156,5 +156,4 @@ public class CardsController {
                     .body(new ResponseDto(CardsConstants.STATUS_417, CardsConstants.MESSAGE_417_DELETE));
         }
     }
-
 }

@@ -10,10 +10,5 @@ spring:
     import:
       - "accounts_qa.yml"
       - "accounts_prod.yml"
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
 build:
   version: "1.0.0"

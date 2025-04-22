@@ -1,32 +1,4 @@
 services:
-  rabbitmq:
-    image: rabbitmq:4-management
-    container_name: rabbitmq
-    environment:
-      RABBITMQ_DEFAULT_USER: rabbitmq
-      RABBITMQ_DEFAULT_PASS: P4ssword!
-    ports:
-      - 5672:5672
-      - 15672:15672
-
-  mysql:
-    image: mysql:9.3
-    container_name: mysql
-    restart: unless-stopped
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpass
-    ports:
-      - "3306:3306"
-    volumes:
-      - ./scripts/mysql/init:/docker-entrypoint-initdb.d
-
-  redis:
-    image: redis:7.2
-    container_name: redis
-    restart: unless-stopped
-    ports:
-      - "6379:6379"
-
   alloy:
     image: grafana/alloy:v1.5.1
     container_name: loki-alloy

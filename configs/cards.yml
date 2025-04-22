@@ -10,10 +10,5 @@ spring:
     import:
       - "cards_qa.yml"
       - "cards_prod.yml"
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
 build:
   version: "1.0.0"
