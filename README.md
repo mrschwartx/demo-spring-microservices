@@ -60,9 +60,8 @@ docker compose up -d --build
   - **Nginx**: Reverse proxy and load balancer for distributing incoming traffic and SSL termination.
   - **Docker & Docker Compose**: Containerization of services and easy orchestration of multi-service environments.
   - **Makefile**: Simplified and standardized command execution for build, run, and management of services.
-- **Database & Messaging**:
+- **Database**:
   - **MySQL**: Relational database used for persistent data storage by services.
-  - **RabbitMQ**: Message broker enabling asynchronous, event-driven communication between services.
 
 ## References
 
@@ -75,6 +74,5 @@ docker compose up -d --build
 - [Grafana](https://grafana.com/)
 - [MinIO Documentation](https://min.io/docs/minio/linux/index.html)
 - [Docker Compose Documentation](https://docs.docker.com/compose/)
-- [RabbitMQ Documentation](https://www.rabbitmq.com/)
 - [MySQL Documentation](https://dev.mysql.com/doc/)
 - [Keycloak Documentation](https://www.keycloak.org/documentation)

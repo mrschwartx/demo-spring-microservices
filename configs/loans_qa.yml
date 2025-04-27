@@ -14,8 +14,3 @@ spring:
       ddl-auto: update
     open-in-view: false
     show-sql: true
-  rabbitmq:
-    host: ${RABBITMQ_HOST:localhost}
-    port: ${RABBITMQ_PORT:5672}
-    username: rabbitmq
-    password: P4ssword
