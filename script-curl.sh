@@ -39,6 +39,9 @@ wait
 ## AND will see Request 429: Too Many Requests.
 ## docker exec -it redis redis-cli KEYS *
 
+# Create A New Account Should Use Token
+## Use Postman for easy test
+
 # Clean accounts, cards, loans
 curl -X GET http://localhost:8072/examplebank/accounts/seeds/clean
 curl -X GET http://localhost:8072/examplebank/cards/seeds/clean
