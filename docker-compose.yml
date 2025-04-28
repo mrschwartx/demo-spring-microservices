@@ -1,6 +1,6 @@
 services:
   mysql:
-    image: mysql:9.3
+    image: mysql:5.7
     container_name: ebank-mysql
     restart: unless-stopped
     environment:
@@ -146,7 +146,7 @@ services:
       - gateway
 
   minio:
-    image: minio/minio:RELEASE.2024-12-18T13-15-44Z
+    image: minio/minio:RELEASE.2023-10-24T04-42-36Z
     container_name: loki-minio
     entrypoint:
       - sh
@@ -313,7 +313,7 @@ services:
       - gateway
   
   keycloak:
-    image: quay.io/keycloak/keycloak:26.0.7
+    image: quay.io/keycloak/keycloak:19.0.3
     container_name: keycloak
     ports:
       - "7080:8080"
